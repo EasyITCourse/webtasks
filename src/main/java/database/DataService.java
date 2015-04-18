@@ -68,11 +68,11 @@ public class DataService{
 	}
 	
 	public Account getAccountByLogin(String login){
-		DBConnection conn = getDBConnection();
-		Account result = conn.getAccountByLogin(login);
-		this.putDBConnection(conn);
-		return result;
-	}
+        DBConnection conn = getDBConnection();
+        Account result = conn.getAccountByLogin(login);
+        this.putDBConnection(conn);
+        return result;
+    }
 	
 	public List<Role> getRolesById(int id){
 		DBConnection conn = getDBConnection();

@@ -7,8 +7,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
 
 
 public abstract class AbstractModelBean implements Serializable {
-	private static final long serialVersionUID = 5857934428639544639L;
-	
+
 	protected Object getIdModel() {
 		return super.toString();
 	}
