@@ -80,8 +80,7 @@
 
 	<filter>
 		<filter-name>WebtasksCharsetFilter</filter-name>
-		<filter-class>filters.WebtasksCharsetFilter
-		</filter-class>
+		<filter-class>filters.WebtasksCharsetFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>WebtasksCharsetFilter</filter-name>
