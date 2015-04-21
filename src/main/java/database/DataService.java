@@ -88,6 +88,14 @@ public class DataService{
 		this.putDBConnection(conn);
 		return idAccountRoles;
 	}
+
+    public List<Discipline> getDisciplineList(){
+        DBConnection conn = getDBConnection();
+        List <Discipline> result = conn.getListDisciplines();
+        this.putDBConnection(conn);
+        return result;
+
+    }
 	
 
 	public void close() {

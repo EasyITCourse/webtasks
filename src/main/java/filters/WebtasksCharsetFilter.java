@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 
-/**
- * @author nata
- * @version 1.0
- */
+
 public class WebtasksCharsetFilter extends AbstractWebtasksFilter{
 	private String encoding = "UTF-8";
 	
@@ -27,8 +24,8 @@ public class WebtasksCharsetFilter extends AbstractWebtasksFilter{
 
 	@Override
 	public void doFilter(HttpServletRequest httprequest, HttpServletResponse httpResponse, FilterChain chain) throws IOException, ServletException {
-		httprequest.setCharacterEncoding(encoding);
-		httpResponse.setCharacterEncoding(encoding);
-		chain.doFilter(httprequest, httpResponse);
-	}
+        httprequest.setCharacterEncoding(encoding);
+        httpResponse.setCharacterEncoding(encoding);
+        chain.doFilter(httprequest, httpResponse);
+    }
 }

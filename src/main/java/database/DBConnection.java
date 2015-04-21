@@ -1,6 +1,7 @@
 package database;
 
 import entity.Account;
+import entity.Discipline;
 import entity.Role;
 import org.apache.log4j.Logger;
 
@@ -19,6 +20,8 @@ public class DBConnection {
     private static PreparedStatement loadAccountByLogin;
     private static PreparedStatement loadRolesById;
     private static PreparedStatement getIdAccountRoles;
+    // PreparedStatement для дисциплин
+    private static PreparedStatement getListDisciplines;
 
 
     public DBConnection(String url, String user, String password) {
@@ -40,7 +43,7 @@ public class DBConnection {
             loadAccountByLogin = conn.prepareStatement("SELECT * FROM account WHERE login = ?");
             loadRolesById = conn.prepareStatement("SELECT * FROM account_role WHERE id =?");
             getIdAccountRoles = conn.prepareStatement("SELECT id_role FROM account_role WHERE id_account = ?");
-
+            getListDisciplines = conn.prepareStatement("SELECT * FROM disciplines");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -54,6 +57,7 @@ public class DBConnection {
             loadAccountByLogin.close();
             loadRolesById.close();
             getIdAccountRoles.close();
+            getListDisciplines.close();
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -167,5 +171,27 @@ public class DBConnection {
         return idAccountRoles;
     }
 
+    // Для дисциплин
+    public List<Discipline> getListDisciplines() {
+
+       //"SELECT * FROM disciplines"
+
+        rs = null;
+        List<Discipline> result = new LinkedList<Discipline>();
+        try {
+            rs = getListDisciplines.executeQuery();
+            while (rs.next()) {
+                Discipline r = new Discipline();
+                r.setId(rs.getInt("id"));
+                r.setName(rs.getString("name"));
+                result.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+
+    }
 
 }
